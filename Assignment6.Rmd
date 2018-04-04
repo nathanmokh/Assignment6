@@ -178,6 +178,16 @@ mappp <- mappp+ annotate("text", x = -4.5, y = 50, label = "The Barrel at Bude")
 mappp <- mappp+ annotate("text", x = -4.5, y = 50, label = "Bude Cornwall Cricket Club")
 mappp
 ```
+##Some Hotels:
+
+```{r message=FALSE, warning=FALSE, echo = FALSE}
+map3 <- get_map(location = "Bude", zoom= 14)
+df <- data.frame(location = c('An Mor', 'Edgcumbe Hotel', 'Sunrise Guest House'), color = 'blue', stringsAsFactors = FALSE)
+locs_geo <- geocode(df$location)
+df <- cbind(df, locs_geo)
+ggmap(map3) + geom_point(data = df, aes(x = lon, y = lat))
+
+```
 
 ## Citations
 
